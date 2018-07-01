@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <SeekBar
+        android:id="@+id/seekBar1"
+        android:layout_width="290dp"
+        android:layout_height="100dp"
+        android:rotation="270" 
+        android:layout_marginTop="95dp"
+        android:layout_marginLeft="-80dp"/>
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/imageButton1"
+        android:src="@drawable/right" />
+
+    <ImageButton
+        android:id="@+id/imageButton1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="26dp"
+        android:layout_toLeftOf="@+id/imageButton2"
+        android:src="@drawable/left" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/seekBar1"
+        android:layout_marginRight="-175dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/brk" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_above="@+id/imageButton1"
+        android:layout_alignLeft="@+id/imageButton3"
+        android:layout_alignParentRight="true"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/button1"
+        android:text="" />
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView1"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView2" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+            
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="client replies"
+                android:textColor="#0000FF" />
+
+			<TextView 
+			    android:id="@+id/textView4" 
+			    android:layout_width="match_parent" 
+			    android:layout_height="match_parent" 
+			    android:text=""/>
+        </LinearLayout>
+    </ScrollView>
+
+    <ToggleButton
+        android:id="@+id/toggleButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toggleButton2"
+        android:layout_toRightOf="@+id/seekBar1"
+        android:text="ToggleButton" />
+
+    <ToggleButton
+        android:id="@+id/toggleButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/toggleButton1"
+        android:layout_alignParentTop="true"
+        android:text="ToggleButton" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/toggleButton2"
+        android:layout_alignBottom="@+id/toggleButton2"
+        android:layout_alignRight="@+id/seekBar1"
+        android:layout_marginRight="11dp"
+        android:text="LEFT"
+        android:textColor="#008000" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/toggleButton1"
+        android:layout_alignBottom="@+id/toggleButton1"
+        android:layout_alignLeft="@+id/textView5"
+        android:layout_toLeftOf="@+id/toggleButton1"
+        android:text="RIGHT"
+        android:textColor="#008000" />
+
+    <Button
+        android:id="@+id/button1"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/toggleButton2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="D" />
+
+</RelativeLayout>
