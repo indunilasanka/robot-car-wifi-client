@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import com.javacodegeeks.android.androidsocketclient.R;
+import com.aztec.android.androidsocketclient.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,7 +19,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class Main extends Activity {
-	
+
 	private static Socket socket;
 	private static PrintWriter out;
 	private static int SERVERPORT;
@@ -28,14 +28,14 @@ public class Main extends Activity {
     EditText ipAdr,port;
     boolean valid,available;
     Thread t;
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main);	
-		Intent intent=getIntent(); 
+		setContentView(R.layout.main);
+		Intent intent=getIntent();
 		String message = intent.getStringExtra("data");
-		
+
 		ipAdr = (EditText) findViewById(R.id.EditText01);
 		port = (EditText) findViewById(R.id.editText1);
 		connect = (Button) findViewById(R.id.button1);
@@ -46,16 +46,16 @@ public class Main extends Activity {
 		}
 		addListenerOnButton();
 	}
-	
+
 	public void addListenerOnButton() {
-		
+
 		connect.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
-				valid=false;	
+				valid=false;
 				valid=validate();
-				
+
 				if((valid)){
 					t=new Thread(new ClientThread());
 					t.start();
@@ -71,21 +71,21 @@ public class Main extends Activity {
 			        {
 						Toast.makeText(Main.this,"No listening server found",Toast.LENGTH_SHORT).show();
 			        }
-				}		
+				}
 			}
 		});
 	}
-	
+
 	public boolean validate(){
 		String IP,pt;
 		IP=ipAdr.getText().toString();
 		pt=port.getText().toString();
-		
+
 		if(IP.trim().length() > 0){
 			boolean valid;
 			IpValidator a=new IpValidator();
 			valid=a.validate(IP);
-			if(valid){		
+			if(valid){
 				if(pt.trim().length() > 0){
 					if (pt.matches("[0-9]+") && pt.length() > 0) {
 						SERVERPORT=Integer.parseInt(pt);
@@ -112,31 +112,31 @@ public class Main extends Activity {
 			return false;
 		}
 	}
-	
+
 	public Socket getSocket(){
 		return socket;
 	}
-	
+
 	public PrintWriter getPrintWriter(){
 		return out;
 	}
-	
+
 	public String getIP(){
 		return SERVER_IP;
 	}
-	
+
 	public int getPort(){
 		return SERVERPORT;
 	}
-	
+
 	class ClientThread implements Runnable {
 		@Override
 		public void run() {
-			try {		
+			try {
 				InetAddress serverAddr = InetAddress.getByName(SERVER_IP);
 				socket = new Socket(serverAddr, SERVERPORT);
 				out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())),true);
-								
+
 			} catch (UnknownHostException e1) {
 				e1.printStackTrace();
 			} catch (IOException e1) {
